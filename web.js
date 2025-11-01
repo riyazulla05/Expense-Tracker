@@ -1,6 +1,4 @@
 // ✅ Redirect to login if not logged in
-console.log("✅ web.js loaded successfully!");
-alert("JS Connected ✅");
 
 const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 if (!loggedInUser) {
@@ -198,4 +196,5 @@ loadData();
 updateDashboard();
 displayExpenses();
 updateChart();
+
 
