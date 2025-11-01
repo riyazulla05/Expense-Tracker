@@ -1,4 +1,18 @@
 // ✅ Redirect to login if not logged in
+// --- LOGIN PROTECTION ---
+const currentPage = window.location.pathname.split("/").pop(); // e.g. 'login.html'
+
+const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+// ✅ Only protect the main dashboard
+if (!loggedInUser && currentPage === 'index.html') {
+  window.location.href = 'login.html';
+}
+
+// ✅ If already logged in, don’t allow going back to login/signup
+if (loggedInUser && (currentPage === 'login.html' || currentPage === 'signup.html')) {
+  window.location.href = 'index.html';
+}
 
 const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 if (!loggedInUser) {
@@ -196,5 +210,6 @@ loadData();
 updateDashboard();
 displayExpenses();
 updateChart();
+
 
 
